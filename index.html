@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            position: relative;
+            /* Needed for absolute positioning of video */
+            overflow-x: hidden;
+            /* Prevent horizontal scrollbar */
+        }
+
+        /* Video Background */
+        #video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            /* Place behind other content */
+            filter: blur(2px);
+            /* Apply blur effect */
+        }
+
+        header {
+            background-color: rgba(55, 32, 55, 0.8);
+            /* Semi-transparent background */
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+
+        nav {
+            background-color: rgba(244, 244, 244, 0.8);
+            /* Semi-transparent background */
+            padding: 0.5em 0;
+            text-align: center;
+        }
+
+        nav a {
+            margin: 0 1em;
+            text-decoration: none;
+            color: #333;
+        }
+
+        section {
+            padding: 2em;
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.8);
+            /* Semi-transparent background */
+            border-radius: 8px;
+            /* Optional: Rounded corners */
+            margin-top: 20px;
+            /* Add some space from the top */
+        }
+
+        .project {
+            border: 1px solid #ddd;
+            padding: 1em;
+            margin-bottom: 1em;
+            background-color: rgba(255, 255, 255, 0.9);
+            /* Semi-transparent background */
+            border-radius: 4px;
+        }
+
+        footer {
+            background-color: rgba(51, 51, 51, 0.8);
+            /* Semi-transparent background */
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1em;
+        }
+
+        .project-image {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 1em;
+        }
+    </style>
+</head>
+
+<body>
+
+    <video autoplay muted loop id="video-background">
+        <source src="image\2.mp4" type="video/mp4">
+    </video>
+
+    <header>
+        <img src="image/IMG_2982.jpg" alt="Header Image">
+        <h1>Trieu Huy Giang</h1>
+        <p>Student at The City College of San Francisco | Tech Enthusiasm </p>
+    </header>
+
+    <nav>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <p>Hi! My name is Trieu Giang (Chill-Jiang - this is the best way to say my name. My name is hard to pronounce).
+            I was born and raised in Vietnam and moved to the United States in 2018. Since then, I have been taking ESL
+            classes to strengthen my English skills while pursuing my passion for computer science.
+        <p>
+
+        <p>I enjoy problem-solving and learning new technologies, especially Java programming. I thrive in interactive
+            classroom environments where I can engage with peers and instructors to deepen my understanding. Outside of
+            academics, I love exploring new challenges and continuously growing both personally and professionally. I am
+            excited about my new journey in the tech world and look forward to making a meaningful impact in the field
+            of software and web development.
+        </p>
+    </section>
+
+    <section id="Education">
+        <h2>Education</h2>
+        <p>Banking University HCM (Vietnam)</p>
+        <p>University of Economics HCMC (Vietnam)</p>
+        <p>The City College of San Francisco</p>
+    </section>
+
+    <section id="Experience">
+        <h2>Experience</h2>
+        <p>My name is Trieu Giang and I love you 3000</p>
+    </section>
+
+    <section id="projects">
+        <h2>Projects</h2>
+
+        <div class="project">
+            <h3>Project 1: Develop an Interactive Web-Based 3D Visualization Tool</h3>
+            <img src="image/project1.png" alt="Project 1 Image" class="project-image">
+            <p>Use WebGL to create a web page that allows users to visualize and interact with 3D objects.</p>
+            <a href="#">View Project</a>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>Email:thg1819@gmail.com</p>
+        <p>LinkedIn: <a href="empty" target="_blank">LinkedIn Profile</a></p>
+        <p>GitHub: <a href="https://trieuhuygiang.github.io/" target="_blank">GitHub Profile</a></p>
+        <p>Instagram: <a href="https://www.instagram.com/huythuanphat/" target="_blank">Instagram Profile</a></p>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Trieu Huy Giang</p>
+    </footer>
+    <!-- music part -->
+
+    <div id="audio-controls">
+        <button id="playButton">Play Audio</button>
+    </div>
+
+    <audio id="myAudio" loop>
+        <source src="music/1.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const audio = document.getElementById('myAudio');
+            const playButton = document.getElementById('playButton');
+
+            playButton.addEventListener('click', function () {
+                if (audio.paused) {
+                    audio.play();
+                    playButton.textContent = 'Pause Audio';
+                } else {
+                    audio.pause();
+                    playButton.textContent = 'Play Audio';
+                }
+            });
+        });
+    </script>
+
+    <!--     music part -->
+
+</body>
+
+</html>
