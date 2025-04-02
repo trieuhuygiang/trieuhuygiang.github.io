@@ -24,6 +24,8 @@
             box-sizing: border-box;
         }
 
+
+
         /* ###########MusicPart############################## */
         #music-toggle {
             position: fixed;
@@ -105,6 +107,21 @@
             padding: 1.5em;
             background-color: rgba(0, 0, 0, 0.562);
             box-shadow: 0 0 8px var(--primary);
+        }
+
+        @media (max-width: 600px) {
+            nav {
+                flex-direction: column;
+                align-items: center;
+                gap: 1em;
+            }
+
+            nav a {
+                width: 90%;
+                text-align: center;
+                padding: 1em;
+                font-size: 1em;
+            }
         }
 
         nav a {
