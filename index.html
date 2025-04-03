@@ -109,13 +109,23 @@
         }
 
         nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 0.8em 0;
+            text-align: center;
             display: flex;
             justify-content: center;
             gap: 2em;
-            padding: 1.5em;
-            background-color: rgba(0, 0, 0, 0.562);
-            box-shadow: 0 0 8px var(--primary);
+            border-top: 1px solid rgba(0, 255, 255, 0.2);
+            border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+            backdrop-filter: blur(6px);
         }
+
+
+
+
 
         @media (max-width: 600px) {
             nav {
@@ -136,17 +146,18 @@
             text-decoration: none;
             font-family: var(--font-header);
             color: var(--text-light);
-            border: 1px solid var(--accent);
-            padding: 0.75em 1.25em;
-            border-radius: 5px;
+            border-radius: 20px;
+            padding: 0.4em 1em;
             transition: all 0.3s ease;
+            font-size: 1em;
+            font-weight: 500;
         }
 
         nav a:hover {
-            background: var(--accent);
-            color: #2300ad;
-            box-shadow: 0 0 10px var(--secondary);
+            background-color: var(--accent);
+            color: #000;
         }
+
 
         section {
             max-width: 900px;
@@ -425,6 +436,33 @@
     <footer>
         <p>&copy; 2025 Trieu Huy Giang All rights reserved.</p>
     </footer>
+    <script>
+        const nav = document.querySelector("nav");
+        let lastScrollY = window.scrollY;
+
+        window.addEventListener("scroll", () => {
+            const currentScroll = window.scrollY;
+
+            // When scrolling down
+            if (currentScroll > lastScrollY && currentScroll > 100) {
+                nav.classList.add("hide");
+            }
+            // When scrolling up
+            else {
+                nav.classList.remove("hide");
+
+                if (currentScroll > 50) {
+                    nav.classList.add("shrink");
+                } else {
+                    nav.classList.remove("shrink");
+                }
+            }
+
+            lastScrollY = currentScroll;
+        });
+    </script>
+
+
 
 </body>
 
