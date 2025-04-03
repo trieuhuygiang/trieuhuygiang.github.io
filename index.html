@@ -35,24 +35,41 @@
         }
 
         /* ###########MusicPart############################## */
-        #music-toggle {
+        #audio-controls {
             position: fixed;
-            bottom: 10px;
-            left: 10px;
-            background-color: rgba(245, 11, 124, 0);
-            border: none;
-            color: white;
-            font-size: 1.5em;
-            padding: 0.4em 0.6em;
-            border-radius: 8px;
-            cursor: pointer;
-            z-index: 999;
-            transition: background-color 0.3s ease;
+            bottom: 20px;
+            left: 20px;
+            z-index: 10000;
+            background-color: transparent;
+            pointer-events: auto;
         }
 
-        #music-toggle:hover {
-            background-color: rgba(47, 62, 70, 1);
+        #playButton {
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            background-color: #0281ffab;
+            color: rgba(255, 255, 255, 0.79);
+            border: none;
+            padding: 0.2em 0.6em;
+            /* smaller padding */
+            font-size: 0.55rem;
+            /* smaller text */
+            border-radius: 14px;
+            /* reduced radius */
+            cursor: pointer;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+            transition: all 0.2s ease-in-out;
         }
+
+
+
+        #playButton:hover {
+            background-color: #06d3c2dc;
+            transform: scale(1.05);
+        }
+
+
 
         /* ################MusicPart#################### */
 
@@ -131,6 +148,7 @@
                 padding: 0.5em 0.8em;
             }
         }
+
         nav a {
             text-decoration: none;
             font-family: var(--font-header);
@@ -299,29 +317,34 @@
     <!-- musicpart!!!!!!!!!!!!!!!!! -->
     <audio id="bg-music" loop>
         <source src="Audio/1.mp3" type="audio/mp3">
-        Your browser does not support the audio element.
     </audio>
 
+
     <!-- Music Control Button -->
-    <button id="music-toggle" title="Play/Pause Music">▶️</button>
+    <div id="audio-controls">
+        <button id="playButton">Play Audio</button>
+    </div>
+
+
 
     <script>
-        const music = document.getElementById('bg-music');
-        const toggleBtn = document.getElementById('music-toggle');
+        document.addEventListener('DOMContentLoaded', function () {
+            const audio = document.getElementById('bg-music');
+            const playButton = document.getElementById('playButton');
 
-        let isPlaying = false;
-
-        toggleBtn.addEventListener('click', () => {
-            if (isPlaying) {
-                music.pause();
-                toggleBtn.textContent = '▶️';
-            } else {
-                music.play();
-                toggleBtn.textContent = '⏸️';
-            }
-            isPlaying = !isPlaying;
+            playButton.addEventListener('click', function () {
+                if (audio.paused) {
+                    audio.play();
+                    playButton.textContent = 'Pause Audio';
+                } else {
+                    audio.pause();
+                    playButton.textContent = 'Play Audio';
+                }
+            });
         });
     </script>
+
+
     <!-- ------------------Music part----------------- -->
 
     <div class="background-video">
@@ -451,9 +474,5 @@
         });
     </script>
 
-
-
 </body>
-
-
 </html>
