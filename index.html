@@ -7,6 +7,8 @@
     <title>Trieu's Porfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Roboto+Mono&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
     <style>
         :root {
             --primary: #00e5ff;
@@ -16,6 +18,14 @@
             --text-light: #e4e4e4;
             --font-header: 'Orbitron', sans-serif;
             --font-body: 'Roboto Mono', monospace;
+            --icon-color: #00e5ff;
+            /* icon default color */
+            --icon-hover: #ff0080;
+            /* icon hover color */
+            --email-link-color: #00ffea;
+            /* color for email link */
+            --email-hover-color: #ffffff;
+            /* email link hover color */
         }
 
         * {
@@ -228,7 +238,61 @@
         a {
             transition: all 0.3s ease;
         }
+
+        #contact {
+            max-width: 900px;
+            margin: 4em auto;
+            padding: 2.5em;
+            background-color: rgba(9, 2, 2, 0.56);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 0.5em;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
+            text-align: left;
+            /* moves text to the left */
+        }
+
+        .contact-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5em;
+        }
+
+        .contact-email {
+            font-size: 1.2em;
+            color: var(--text-light);
+            margin-bottom: 1em;
+        }
+
+        .email-link {
+            color: var(--email-link-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .email-link:hover {
+            color: var(--email-hover-color);
+            text-decoration: underline;
+        }
+
+        .contact-icons {
+            display: flex;
+            justify-content: center;
+            gap: 2em;
+            font-size: 2.5em;
+        }
+
+        .contact-icons a {
+            color: var(--icon-color);
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .contact-icons a:hover {
+            color: var(--icon-hover);
+            transform: scale(1.2);
+        }
     </style>
+
+
 </head>
 
 <body>
@@ -291,7 +355,7 @@
             classroom environments where I can engage with peers and instructors to deepen my understanding. Outside of
             academics, I love exploring new challenges and continuously growing both personally and professionally. I am
             excited about my new journey in the tech world and look forward to making a meaningful impact in the field
-            of cyber security and web development.</p>
+            of cybersecurity and web development.</p>
     </section>
 
     <section id="experience">
@@ -313,7 +377,7 @@
                         <p>Use WebGL to create a web page that allows users to visualize and interact with 3D objects.
                         </p>
                         <P>The project by Open Avenues and lnkbit</P>
-                        <p>Project leader: <a href="https://qiaodongcui.github.io/">Qiaodong Cui, Ph.D.</a></p>
+                        <p>Project leader: <a href="https://qiaodongcui.github.io/"> Qiaodong Cui, Ph.D.</a></p>
 
                         <a href="https://github.com/trieuhuygiang/trieuhuygiang.github.io/tree/main/Projects/Project1">Explore
                         </a>
@@ -325,10 +389,23 @@
     </section>
 
     <section id="contact">
-        <h2>Handshake</h2>
-        <p>Email: thg1819@gmail.com</p>
-        <p>GitHub: <a href="https://trieuhuygiang.github.io/">My Portfolio</a></p>
-        <p>LinkedIn: <a href="#">Click here</a></p>
+        <h2>Contact</h2>
+        <div class="contact-content">
+            <p class="contact-email">
+                Email: <a href="mailto:thg1819@gmail.com" class="email-link">thg1819@gmail.com</a>
+            </p>
+            <div class="contact-icons">
+                <a href="https://www.linkedin.com/" target="_blank" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://github.com/trieuhuygiang" target="_blank" aria-label="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://www.instagram.com/" target="_blank" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+        </div>
     </section>
 
     <footer>
@@ -336,5 +413,4 @@
     </footer>
 
 </body>
-
 </html>
