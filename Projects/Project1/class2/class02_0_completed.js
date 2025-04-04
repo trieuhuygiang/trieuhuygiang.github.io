@@ -27,18 +27,33 @@ const edgeMaterial = new THREE.LineBasicMaterial({ color: 0xff0000 }); // Edge c
 const cubeEdges = new THREE.LineSegments(edgeGeometry, edgeMaterial);
 scene.add(cubeEdges);
 
-const sphereGeometry  = new THREE.SphereGeometry(0.7, 32, 16);
-const sphereMesh = new THREE.Mesh(sphereGeometry, material);
-scene.add(sphereMesh);
+// const sphereGeometry = new THREE.SphereGeometry(0.7, 32, 16);
+// const sphereMesh = new THREE.Mesh(sphereGeometry, material);
+// scene.add(sphereMesh);
 
-sphereMesh.position.x = 1
+// sphereMesh.position.x = 2
+
+const pyramidGeometry = new THREE.ConeGeometry(1, 1.5, 4); // baseRadius = 1, height = 1.5, sides = 4 (square base)
+const pyramidMesh = new THREE.Mesh(pyramidGeometry, material);
+pyramidMesh.position.x = 2;
+scene.add(pyramidMesh);
+
+const pyramidEdgeGeometry = new THREE.EdgesGeometry(pyramidGeometry);
+const pyramidEdges = new THREE.LineSegments(pyramidEdgeGeometry, edgeMaterial);
+pyramidEdges.position.copy(pyramidMesh.position); // sync positions
+scene.add(pyramidEdges);
+
+
 // use group
 const group = new THREE.Group();
 scene.add(group);
 
 group.add(cube)
 group.add(cubeEdges)
-group.add(sphereMesh)
+// group.add(sphereMesh)
+group.add(pyramidMesh);
+group.add(pyramidEdges);
+
 
 //group.scale.set(2, 2, 2)
 //cube.position.set(1, 1, 1)
