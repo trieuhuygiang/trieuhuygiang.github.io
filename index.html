@@ -34,45 +34,6 @@
             box-sizing: border-box;
         }
 
-        /* ###########MusicPart############################## */
-        #audio-controls {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            z-index: 10000;
-            background-color: transparent;
-            pointer-events: auto;
-        }
-
-        #playButton {
-            font-family: 'Orbitron', sans-serif;
-            letter-spacing: 0.8px;
-            text-transform: uppercase;
-            background-color: #02ccffab;
-            color: rgba(255, 255, 255, 0.79);
-            border: none;
-            padding: 0.2em 0.6em;
-            /* smaller padding */
-            font-size: 0.55rem;
-            /* smaller text */
-            border-radius: 14px;
-            /* reduced radius */
-            cursor: pointer;
-            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
-            transition: all 0.2s ease-in-out;
-        }
-
-
-
-        #playButton:hover {
-            background-color: #f702ffab;
-            transform: scale(1.05);
-        }
-
-
-
-        /* ################MusicPart#################### */
-
 
         body {
             background-color: var(--background);
@@ -314,38 +275,6 @@
 </head>
 
 <body>
-    <!-- musicpart!!!!!!!!!!!!!!!!! -->
-    <audio id="bg-music" loop>
-        <source src="Audio/1.mp3" type="audio/mp3">
-    </audio>
-
-
-    <!-- Music Control Button -->
-    <div id="audio-controls">
-        <button id="playButton">Play Audio</button>
-    </div>
-
-
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const audio = document.getElementById('bg-music');
-            const playButton = document.getElementById('playButton');
-
-            playButton.addEventListener('click', function () {
-                if (audio.paused) {
-                    audio.play();
-                    playButton.textContent = 'Pause Audio';
-                } else {
-                    audio.pause();
-                    playButton.textContent = 'Play Audio';
-                }
-            });
-        });
-    </script>
-
-
-    <!-- ------------------Music part----------------- -->
 
     <div class="background-video">
         <video autoplay muted loop playsinline preload="auto">
@@ -478,10 +407,6 @@
             lastScrollY = currentScroll;
         });
     </script>
-
-
-
 </body>
-
 
 </html>
