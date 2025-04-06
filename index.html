@@ -2,406 +2,55 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Trieu's Porfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Roboto+Mono&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
+    <meta charset="UTF-8">
+    <title>Join My Minecraft Server</title>
     <style>
-        :root {
-            --primary: #00e5ff;
-            --secondary: #00e5ff;
-            --accent: hsl(195, 100%, 50%);
-            --background: #090909;
-            --text-light: #e4e4e4;
-            --font-header: 'Orbitron', sans-serif;
-            --font-body: 'Roboto Mono', monospace;
-            --icon-color: #00e5ff;
-            /* icon default color */
-            --icon-hover: #ff0080;
-            /* icon hover color */
-            --email-link-color: #00ffea;
-            /* color for email link */
-            --email-hover-color: #f70afb;
-            /* email link hover color */
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-
         body {
-            background-color: var(--background);
-            color: var(--text-light);
-            font-family: var(--font-body);
-            line-height: 1.7;
-        }
-
-        .background-video {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            opacity: 0.45;
-            filter: blur(4px);
-        }
-
-        .background-video video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        header {
+            font-family: Arial, sans-serif;
+            background-color: #e0f7fa;
+            padding: 30px;
             text-align: center;
-            padding: 4em 1em 2em;
         }
 
-        .profile-image {
-            width: 180px;
-            height: 180px;
-            border-radius: 100%;
-            border: 3px solid var(--accent);
-            margin: 0 auto 1em;
-            box-shadow: 0 0 20px var(--primary);
+        h1 {
+            color: #00796b;
         }
 
-        header h1 {
-            font-family: var(--font-header);
-            font-size: 2.8em;
-            color: var(--primary);
-            text-shadow: 0 0 3px var(--secondary);
-        }
-
-        header p {
-            color: #ccc;
-            font-size: 1.1em;
-            margin-top: 0.5em;
-        }
-
-        nav {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background-color: rgba(0, 0, 0, 0.6);
-            padding: 0.8em 0;
-            text-align: center;
-            display: flex;
-            justify-content: center;
-            gap: 2em;
-            flex-wrap: wrap;
-            /* allow wrapping on small screens */
-            border-top: 1px solid rgba(0, 255, 255, 0.2);
-            border-bottom: 1px solid rgba(0, 255, 255, 0.2);
-            backdrop-filter: blur(6px);
-        }
-
-        @media (max-width: 600px) {
-            nav a {
-                font-size: 0.9em;
-                padding: 0.5em 0.8em;
-            }
-        }
-
-        nav a {
-            text-decoration: none;
-            font-family: var(--font-header);
-            color: var(--text-light);
-            border-radius: 20px;
-            padding: 0.4em 1em;
-            transition: all 0.3s ease;
-            font-size: 1em;
-            font-weight: 500;
-        }
-
-        nav a:hover {
-            background-color: var(--accent);
-            color: #000;
-        }
-
-
-        section {
-            max-width: 900px;
-            margin: 4em auto;
-            padding: 2.5em;
-            background-color: rgba(9, 2, 2, 0.56);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 0.5em;
-            box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
-        }
-
-        section h2 {
-            font-family: var(--font-header);
-            font-size: 2em;
-            margin-bottom: 1em;
-            color: var(--secondary);
-            border-bottom: 2px solid var(--secondary);
-            padding-bottom: 0.5em;
-        }
-
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 2em;
-        }
-
-        .project-item {
-            background: rgba(0, 0, 0, 0.444);
-            border: 1px solid rgba(0, 0, 0, 0.29);
-            padding: 1.5em;
-            border-radius: 0.5em;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .project-item:hover {
-            transform: translateY(-0.4em);
-            box-shadow: 0 0 15px var(--primary);
-        }
-
-        .project-item h3 {
-            font-family: var(--font-header);
-            font-size: 1.3em;
-            color: var(--primary);
-        }
-
-        .project-item p {
-            color: #e4e4e4;
-            margin: 0.5em 0 1em;
-        }
-
-        .project-item a {
-            color: var(--secondary);
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .project-item a:hover {
-            color: #e60ad7;
-        }
-
-        .project-content {
-            display: flex;
-            align-items: flex-start;
-            gap: 1em;
-        }
-
-        .project-thumb {
-            width: 100px;
-            height: 100px;
-            object-fit: cover;
-            border-radius: 8px;
-            box-shadow: 0 0 8px var(--accent);
-            flex-shrink: 0;
-        }
-
-        .project-text {
-            flex-grow: 1;
-        }
-
-        footer {
-            text-align: center;
-            padding: 2em;
-            font-size: 0.9em;
-            background: #11111178;
-            color: #777;
-            margin-top: 5em;
-        }
-
-        a {
-            transition: all 0.3s ease;
-        }
-
-        #contact {
-            max-width: 900px;
-            margin: 4em auto;
-            padding: 2.5em;
-            background-color: rgba(9, 2, 2, 0.56);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 0.5em;
-            box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
+        .instructions {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: inline-block;
             text-align: left;
-            /* moves text to the left */
+            padding: 20px 30px;
+            margin-top: 20px;
         }
 
-        .contact-content {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5em;
-        }
-
-        .contact-email {
-            font-size: 1.2em;
-            color: var(--text-light);
-            margin-bottom: 1em;
-        }
-
-        .email-link {
-            color: var(--email-link-color);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .email-link:hover {
-            color: var(--email-hover-color);
-            text-decoration: underline;
-        }
-
-        .contact-icons {
-            display: flex;
-            justify-content: center;
-            gap: 2em;
-            font-size: 2.5em;
-        }
-
-        .contact-icons a {
-            color: var(--icon-color);
-            transition: color 0.3s ease, transform 0.3s ease;
-        }
-
-        .contact-icons a:hover {
-            color: var(--icon-hover);
-            transform: scale(1.2);
+        .server-ip {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #d84315;
         }
     </style>
-
-
 </head>
 
 <body>
 
-    <div class="background-video">
-        <video autoplay muted loop playsinline preload="auto">
-            <source src="Images/Backgound/v7.mp4" type="video/mp4">
-        </video>
+    <h1>🎮 Join My Minecraft Server!</h1>
+
+    <div class="instructions">
+        <p>Follow these easy steps to connect to my Minecraft server:</p>
+        <ol>
+            <li>Open Minecraft.</li>
+            <li>Click on <strong>Multiplayer</strong>.</li>
+            <li>Click <strong>Direct connection</strong>.</li>
+            <li>In the Server Address, enter: <strong>146.235.227.220</strong></li>
+            <li>Click <strong>Done</strong>.</li>
+            <li>Select the server from your list and click <strong>Join Server</strong>.</li>
+        </ol>
+        <p>That's it! See you in the game 😄</p>
     </div>
 
-    <header>
-        <img src="Images/1.jpg" alt="My Profile" class="profile-image" />
-        <h1>Trieu Huy Giang</h1>
-        <p>Computer Science Student | Tech lover</p>
-    </header>
-
-    <nav>
-        <a href="#about">About</a>
-        <a href="#experience">Experience</a>
-        <a href="#education">Education</a>
-        <a href="#projects">Project</a>
-        <a href="#contact">Contact</a>
-    </nav>
-
-    <section id="about">
-        <h2>About Me</h2>
-        <p>
-            Hi! My name is Trieu Giang (Chill-Jiang - this is the best way to say my name. My name is hard to
-            pronounce). I was born and raised in Vietnam and moved to the United States in 2018. Since then, I have been
-            taking ESL classes to strengthen my English skills while pursuing my passion for computer science.
-        </p>
-        <p><br></p>
-        <p>I enjoy problem-solving and learning new technologies, especially Java programming. I thrive in interactive
-            classroom environments where I can engage with peers and instructors to deepen my understanding. Outside of
-            academics, I love exploring new challenges and continuously growing both personally and professionally. I am
-            excited about my new journey in the tech world and look forward to making a meaningful impact in the field
-            of cybersecurity and web development.</p>
-    </section>
-
-    <section id="experience">
-        <h2>Experience</h2>
-        <p>
-            I love you 3000 without any experiences.
-        </p>
-    </section>
-
-    <section id="education">
-        <h2>Education</h2>
-        <p>
-            Banking University HCM (Vietnam)
-        </p>
-        <p>University of Economics HCMC (Vietnam)</p>
-        <p><strong>City College of San Francisco (Undergratuate)</strong></p>
-        <p><strong>SFSU (Undergratuate)</strong></p>
-
-    </section>
-
-    <section id="projects">
-        <h2>Projects</h2>
-        <div class="project-grid">
-            <!-- my project -->
-            <div class="project-item">
-                <div class="project-content">
-                    <img src="Images/project images/project1.gif" alt="Project 1 Thumbnail" class="project-thumb" />
-                    <div class="project-text">
-                        <h3>Project 1: Develop an Interactive Web-Based 3D Visualization Tool</h3>
-                        <p>Use WebGL to create a web page that allows users to visualize and interact with 3D objects.
-                        </p>
-                        <P>The project by Open Avenues and lnkbit</P>
-                        <p>Project leader: <a href="https://qiaodongcui.github.io/"> Qiaodong Cui, Ph.D.</a></p>
-                        <p>Project's Porfolio: <a
-                                href="https://github.com/trieuhuygiang/trieuhuygiang.github.io/tree/main/Projects/Project1">
-                                Explore</a></p>
-                    </div>
-                </div>
-            </div>
-            <!-- my project -->
-        </div>
-    </section>
-
-    <section id="contact">
-        <h2>Contact</h2>
-        <div class="contact-content">
-            <p class="contact-email">
-                Email: <a href="mailto:thg1819@gmail.com" class="email-link">thg1819@gmail.com</a>
-            </p>
-            <div class="contact-icons">
-                <a href="https://www.linkedin.com/in/trieuhuygiang/" target="_blank" aria-label="LinkedIn">
-                    <i class="fab fa-linkedin"></i>
-                </a>
-                <a href="https://github.com/trieuhuygiang.github.io" target="_blank" aria-label="GitHub">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a href="https://www.instagram.com/huythuanphat" target="_blank" aria-label="Instagram">
-                    <i class="fab fa-instagram"></i>
-                </a>
-            </div>
-        </div>
-    </section>
-
-
-
-    <footer>
-        <p>&copy; 2025 Trieu Huy Giang All rights reserved.</p>
-    </footer>
-    <script>
-        const nav = document.querySelector("nav");
-        let lastScrollY = window.scrollY;
-
-        window.addEventListener("scroll", () => {
-            const currentScroll = window.scrollY;
-
-            // When scrolling down
-            if (currentScroll > lastScrollY && currentScroll > 100) {
-                nav.classList.add("hide");
-            }
-            // When scrolling up
-            else {
-                nav.classList.remove("hide");
-
-                if (currentScroll > 50) {
-                    nav.classList.add("shrink");
-                } else {
-                    nav.classList.remove("shrink");
-                }
-            }
-
-            lastScrollY = currentScroll;
-        });
-    </script>
 </body>
 
 </html>
