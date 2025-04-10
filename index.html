@@ -2,446 +2,348 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Trieu's Porfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Roboto+Mono&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trieu's Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Roboto+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    <style>
-        :root {
-            --primary: #00e5ff;
-            --secondary: #00e5ff;
-            --accent: hsl(195, 100%, 50%);
-            --background: #090909;
-            --text-light: #e4e4e4;
-            --font-header: 'Orbitron', sans-serif;
-            --font-body: 'Roboto Mono', monospace;
-            --icon-color: #00e5ff;
-            /* icon default color */
-            --icon-hover: #ff0080;
-            /* icon hover color */
-            --email-link-color: #00ffea;
-            /* color for email link */
-            --email-hover-color: #f70afb;
-            /* email link hover color */
-        }
+  <style>
+    :root {
+      --primary: #00e5ff;
+      --secondary: #00e5ff;
+      --accent: #0099cc;
+      --background: #121212;
+      --text-light: #f0f0f0;
+      --font-header: 'Orbitron', sans-serif;
+      --font-body: 'Roboto Mono', monospace;
+      --icon-color: #00e5ff;
+      --icon-hover: #ff0080;
+      --email-link-color: #00ffea;
+      --email-hover-color: #f70afb;
+    }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
+    body {
+      background-color: var(--background);
+      color: var(--text-light);
+      font-family: var(--font-body);
+      line-height: 1.7;
+    }
 
-        body {
-            background-color: var(--background);
-            color: var(--text-light);
-            font-family: var(--font-body);
-            line-height: 1.7;
-        }
+    .background-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      opacity: 0.2;
+      filter: none;
+    }
 
-        .background-video {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            opacity: 0.45;
-            filter: blur(2px);
-        }
+    .background-video video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
 
-        .background-video video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+    header {
+      text-align: center;
+      padding: 3em 1em 2em;
+    }
 
-        header {
-            text-align: center;
-            padding: 4em 1em 2em;
-        }
+    .profile-image {
+      width: 160px;
+      height: 160px;
+      border-radius: 100%;
+      border: 2px solid var(--accent);
+      margin-bottom: 1em;
+    }
 
-        .profile-image {
-            width: 180px;
-            height: 180px;
-            border-radius: 100%;
-            border: 3px solid var(--accent);
-            margin: 0 auto 1em;
-            box-shadow: 0 0 20px var(--primary);
-        }
+    header h1 {
+      font-family: var(--font-header);
+      font-size: 2.2em;
+      color: var(--primary);
+    }
 
-        header h1 {
-            font-family: var(--font-header);
-            font-size: 2.8em;
-            color: var(--primary);
-            text-shadow: 0 0 3px var(--secondary);
-        }
+    header p {
+      color: #ccc;
+      font-size: 1.1em;
+    }
 
-        header p {
-            color: #ccc;
-            font-size: 1.1em;
-            margin-top: 0.5em;
-        }
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background-color: #1a1a1a;
+      padding: 0.8em 0;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      gap: 1.5em;
+      flex-wrap: wrap;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
 
-        nav {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background-color: rgba(0, 0, 0, 0.6);
-            padding: 0.8em 0;
-            text-align: center;
-            display: flex;
-            justify-content: center;
-            gap: 2em;
-            flex-wrap: wrap;
-            /* allow wrapping on small screens */
-            border-top: 1px solid rgba(0, 255, 255, 0.2);
-            border-bottom: 1px solid rgba(0, 255, 255, 0.2);
-            backdrop-filter: blur(6px);
-        }
+    nav a {
+      text-decoration: none;
+      font-family: var(--font-header);
+      color: var(--text-light);
+      padding: 0.4em 1em;
+      transition: all 0.3s ease;
+      font-size: 1em;
+    }
 
-        @media (max-width: 600px) {
-            nav a {
-                font-size: 0.9em;
-                padding: 0.5em 0.8em;
-            }
-        }
+    nav a:hover {
+      background-color: var(--accent);
+      color: #000;
+      border-radius: 5px;
+    }
 
-        nav a {
-            text-decoration: none;
-            font-family: var(--font-header);
-            color: var(--text-light);
-            border-radius: 20px;
-            padding: 0.4em 1em;
-            transition: all 0.3s ease;
-            font-size: 1em;
-            font-weight: 500;
-        }
+    section {
+      max-width: 900px;
+      margin: 3em auto;
+      padding: 2em;
+      background-color: #1e1e1e;
+      border-radius: 0.5em;
+      box-shadow: 0 2px 6px rgba(0, 229, 255, 0.2);
+    }
 
-        nav a:hover {
-            background-color: var(--accent);
-            color: #000;
-        }
+    section h2 {
+      font-family: var(--font-header);
+      font-size: 1.8em;
+      margin-bottom: 1em;
+      color: var(--secondary);
+      border-bottom: 2px solid var(--secondary);
+      padding-bottom: 0.3em;
+    }
 
+    .project-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5em;
+    }
 
-        section {
-            max-width: 900px;
-            margin: 4em auto;
-            padding: 2.5em;
-            background-color: rgba(9, 2, 2, 0.56);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 0.5em;
-            box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
-        }
+    .project-item {
+      background: #222;
+      padding: 1.2em;
+      border-radius: 0.5em;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
 
-        section h2 {
-            font-family: var(--font-header);
-            font-size: 2em;
-            margin-bottom: 1em;
-            color: var(--secondary);
-            border-bottom: 2px solid var(--secondary);
-            padding-bottom: 0.5em;
-        }
+    .project-item:hover {
+      transform: translateY(-0.3em);
+      box-shadow: 0 0 10px var(--primary);
+    }
 
-        .project-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 2em;
-        }
+    .project-item h3 {
+      font-family: var(--font-header);
+      font-size: 1.2em;
+      color: var(--primary);
+    }
 
+    .project-item p {
+      color: var(--text-light);
+      margin: 0.5em 0;
+    }
 
-        .project-item {
-            background: rgba(0, 0, 0, 0.444);
-            border: 1px solid rgba(0, 0, 0, 0.29);
-            padding: 1.5em;
-            border-radius: 0.5em;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
+    .project-item a {
+      color: var(--secondary);
+      text-decoration: none;
+      font-weight: bold;
+    }
 
-        .project-item:hover {
-            transform: translateY(-0.4em);
-            box-shadow: 0 0 15px var(--primary);
-        }
+    .project-item a:hover {
+      color: #e60ad7;
+    }
 
-        .project-item h3 {
-            font-family: var(--font-header);
-            font-size: 1.3em;
-            color: var(--primary);
-        }
+    .project-content {
+      display: flex;
+      align-items: flex-start;
+      gap: 1em;
+    }
 
-        .project-item p {
-            color: #e4e4e4;
-            margin: 0.5em 0 1em;
-        }
+    .project-thumb {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
 
-        .project-item a {
-            color: var(--secondary);
-            text-decoration: none;
-            font-weight: bold;
-        }
+    .project-text {
+      flex-grow: 1;
+    }
 
-        .project-item a:hover {
-            color: #e60ad7;
-        }
+    #contact {
+      text-align: left;
+    }
 
-        .project-content {
-            display: flex;
-            align-items: flex-start;
-            gap: 1em;
-        }
+    .contact-email {
+      font-size: 1.1em;
+      color: var(--text-light);
+    }
 
-        .project-thumb {
-            width: 100px;
-            height: 100px;
-            object-fit: cover;
-            border-radius: 8px;
-            box-shadow: 0 0 8px var(--accent);
-            flex-shrink: 0;
-        }
+    .email-link {
+      color: var(--email-link-color);
+      text-decoration: none;
+    }
 
-        .project-text {
-            flex-grow: 1;
-        }
+    .email-link:hover {
+      color: var(--email-hover-color);
+      text-decoration: underline;
+    }
 
-        footer {
-            text-align: center;
-            padding: 2em;
-            font-size: 0.9em;
-            background: #11111178;
-            color: #777;
-            margin-top: 5em;
-        }
+    .contact-icons {
+      display: flex;
+      justify-content: center;
+      gap: 2em;
+      font-size: 2em;
+      margin-top: 1em;
+    }
 
-        a {
-            transition: all 0.3s ease;
-        }
+    .contact-icons a {
+      color: var(--icon-color);
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
 
-        #contact {
-            max-width: 900px;
-            margin: 4em auto;
-            padding: 2.5em;
-            background-color: rgba(9, 2, 2, 0.56);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 0.5em;
-            box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
-            text-align: left;
-            /* moves text to the left */
-        }
+    .contact-icons a:hover {
+      color: var(--icon-hover);
+      transform: scale(1.2);
+    }
 
-        .contact-content {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5em;
-        }
-
-        .contact-email {
-            font-size: 1.2em;
-            color: var(--text-light);
-            margin-bottom: 1em;
-        }
-
-        .email-link {
-            color: var(--email-link-color);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .email-link:hover {
-            color: var(--email-hover-color);
-            text-decoration: underline;
-        }
-
-        .contact-icons {
-            display: flex;
-            justify-content: center;
-            gap: 2em;
-            font-size: 2.5em;
-        }
-
-        .contact-icons a {
-            color: var(--icon-color);
-            transition: color 0.3s ease, transform 0.3s ease;
-        }
-
-        .contact-icons a:hover {
-            color: var(--icon-hover);
-            transform: scale(1.2);
-        }
-    </style>
-
-
+    footer {
+      text-align: center;
+      padding: 2em;
+      color: #888;
+      margin-top: 5em;
+    }
+  </style>
 </head>
 
 <body>
+  <div class="background-video">
+    <video autoplay muted loop playsinline preload="auto">
+      <source src="Images/Backgound/steam.mp4" type="video/mp4">
+    </video>
+  </div>
 
-    <div class="background-video">
-        <video autoplay muted loop playsinline preload="auto">
-            <source src="Images/Backgound/steam.mp4" type="video/mp4">
-        </video>
-    </div>
+  <header>
+    <img src="Images/1.jpg" alt="My Profile" class="profile-image" />
+    <h1>Trieu Huy Giang</h1>
+    <p>Computer Science Student | Tech lover</p>
+  </header>
 
-    <header>
-        <img src="Images/1.jpg" alt="My Profile" class="profile-image" />
-        <h1>Trieu Huy Giang</h1>
-        <p>Computer Science Student | Tech lover</p>
-    </header>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#experience">Experience</a>
+    <a href="#education">Education</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
 
-    <nav>
-        <a href="#about">About</a>
-        <a href="#experience">Experience</a>
-        <a href="#education">Education</a>
-        <a href="#projects">Project</a>
-        <a href="#contact">Contact</a>
-    </nav>
+  <section id="about">
+    <h2>About Me</h2>
+    <p>Hi! My name is Trieu Giang (Chill-Jiang is the best way to pronounce it). I was born and raised in Vietnam and moved to the U.S. in 2018. I'm taking ESL classes and pursuing my passion for computer science.</p>
+    <p><br></p>
+    <p>I enjoy problem-solving and learning new technologies, especially Java. I thrive in interactive classrooms and love growing both personally and professionally. I'm excited for my journey in cybersecurity and web development.</p>
+  </section>
 
-    <section id="about">
-        <h2>About Me</h2>
-        <p>
-            Hi! My name is Trieu Giang (Chill-Jiang - this is the best way to say my name. My name is hard to
-            pronounce). I was born and raised in Vietnam and moved to the United States in 2018. Since then, I have been
-            taking ESL classes to strengthen my English skills while pursuing my passion for computer science.
-        </p>
-        <p><br></p>
-        <p>I enjoy problem-solving and learning new technologies, especially Java programming. I thrive in interactive
-            classroom environments where I can engage with peers and instructors to deepen my understanding. Outside of
-            academics, I love exploring new challenges and continuously growing both personally and professionally. I am
-            excited about my new journey in the tech world and look forward to making a meaningful impact in the field
-            of cyber security and web development.</p>
-    </section>
+  <section id="experience">
+    <h2>Experience</h2>
+    <p>I love you 3000 without any experiences.</p>
+  </section>
 
-    <section id="experience">
-        <h2>Experience</h2>
-        <p>
-            I love you 3000 without any experiences.
-        </p>
-    </section>
+  <section id="education">
+    <h2>Education</h2>
+    <p>Banking University HCM (Vietnam)</p>
+    <p>University of Economics HCMC (Vietnam)</p>
+    <p><strong>City College of San Francisco (Undergraduate)</strong></p>
+    <p><strong>SFSU (Undergraduate)</strong></p>
+  </section>
 
-    <section id="education">
-        <h2>Education</h2>
-        <p>
-            Banking University HCM (Vietnam)
-        </p>
-        <p>University of Economics HCMC (Vietnam)</p>
-        <p><strong>City College of San Francisco (Undergratuate)</strong></p>
-        <p><strong>SFSU (Undergratuate)</strong></p>
-
-    </section>
-
-    <section id="projects">
-        <h2>Projects</h2>
-        <div class="project-grid">
-            <!-- my project -->
-            <div class="project-item">
-                <div class="project-content">
-                    <img src="Images/project images/project1.gif" alt="Project 1 Thumbnail" class="project-thumb" />
-                    <div class="project-text">
-                        <h3>Project 1: Develop an Interactive Web-Based 3D Visualization Tool</h3>
-                        <p>Use WebGL to create a web page that allows users to visualize and interact with 3D objects.
-                        </p>
-                        <P>The project by Open Avenues and lnkbit</P>
-                        <p>Project leader:
-                            <a href="https://qiaodongcui.github.io/" target="_blank" rel="noopener noreferrer"> Qiaodong
-                                Cui, Ph.D.</a>
-                        </p>
-
-                        <p>Project's Porfolio:
-                            <a href="https://github.com/trieuhuygiang/trieuhuygiang.github.io/tree/main/Projects/Project1"
-                                target="_blank" rel="noopener noreferrer">Explore</a>
-                        </p>
-
-                        <a href="http://64.181.233.195/Projects/Project1/Class1/class01.html" target="_blank"
-                            rel="noopener noreferrer">Class 1</a>
-                        <a href="http://64.181.233.195/Projects/Project1/class2/class02.html" target="_blank"
-                            rel="noopener noreferrer">Class 2</a>
-
-                    </div>
-                </div>
-            </div>
-            <!-- my project -->
-            <div class="project-item">
-                <div class="project-content">
-                    <img src="Images/project images/minecraft.gif" alt="Project 1 Thumbnail" class="project-thumb" />
-                    <div class="project-text">
-                        <h3>My Personal Minecraft Java Server: Just making a 24/7 sample of Minecraft Server</h3>
-                        <p>As a hands-on exercise to strengthen my familiarity with cloud infrastructure and the Linux
-                            operating system, I deployed a personal Minecraft server using a cloud service on an Ubuntu
-                            virtual machine.
-                        </p>
-                        <p>The primary goal of this project was to ensure that the server could run continuously, 24/7,
-                            without interruptions — serving as a practical test of uptime management, cloud-based
-                            deployment, and basic system administration</p>
-                        <p>The server runs <strong>Minecraft version 1.20.1</strong>, selected specifically to support
-                            the Shadowslands
-                            mod created by dreamcritting, which introduces unique features and enhancements to the game.
-                        </p>
-                        <p><strong>Server IP Address: 159.54.177.165</strong></p>
-                        <p>Instruction:
-                            <a href="http://64.181.233.195/Projects/minecraft/instruction.html" target="_blank"
-                                rel="noopener noreferrer">Explore</a>
-                        </p>
-
-                    </div>
-                </div>
-            </div>
-    </section>
-
-    <section id="contact">
-        <h2>Contact</h2>
-        <div class="contact-content">
-            <p class="contact-email">
-                Email: <a href="mailto:thg1819@gmail.com" class="email-link">thg1819@gmail.com</a>
-            </p>
-            <div class="contact-icons">
-                <a href="https://www.linkedin.com/in/trieuhuygiang/" target="_blank" aria-label="LinkedIn">
-                    <i class="fab fa-linkedin"></i>
-                </a>
-                <a href="https://github.com/trieuhuygiang.github.io" target="_blank" aria-label="GitHub">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a href="https://www.instagram.com/huythuanphat" target="_blank" aria-label="Instagram">
-                    <i class="fab fa-instagram"></i>
-                </a>
-            </div>
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="project-grid">
+      <div class="project-item">
+        <div class="project-content">
+          <img src="Images/project images/project1.gif" alt="Project 1 Thumbnail" class="project-thumb" />
+          <div class="project-text">
+            <h3>Interactive 3D Web Visualization Tool</h3>
+            <p>Uses WebGL to let users interact with 3D objects on the web.</p>
+            <p>Project by Open Avenues & lnkbit</p>
+            <p>Leader: <a href="https://qiaodongcui.github.io/" target="_blank">Qiaodong Cui, Ph.D.</a></p>
+            <p><a href="https://github.com/trieuhuygiang/trieuhuygiang.github.io/tree/main/Projects/Project1" target="_blank">Project Repo</a></p>
+            <a href="http://64.181.233.195/Projects/Project1/Class1/class01.html" target="_blank">Class 1</a> |
+            <a href="http://64.181.233.195/Projects/Project1/class2/class02.html" target="_blank">Class 2</a>
+          </div>
         </div>
-    </section>
+      </div>
 
+      <div class="project-item">
+        <div class="project-content">
+          <img src="Images/project images/minecraft.gif" alt="Minecraft Server Thumbnail" class="project-thumb" />
+          <div class="project-text">
+            <h3>Personal Minecraft Java Server</h3>
+            <p>Deployed a 24/7 Minecraft server using a Linux cloud VM as a practical exercise in cloud hosting.</p>
+            <p>Server Version: 1.20.1 | Mod: Shadowslands by Dreamcritting</p>
+            <p><strong>Server IP:</strong> 159.54.177.165</p>
+            <p><a href="http://64.181.233.195/Projects/minecraft/instruction.html" target="_blank">Setup Instructions</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <section id="contact">
+    <h2>Contact</h2>
+    <p class="contact-email">
+      Email: <a href="mailto:thg1819@gmail.com" class="email-link">thg1819@gmail.com</a>
+    </p>
+    <div class="contact-icons">
+      <a href="https://www.linkedin.com/in/trieuhuygiang/" target="_blank" aria-label="LinkedIn">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://github.com/trieuhuygiang.github.io" target="_blank" aria-label="GitHub">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="https://www.instagram.com/huythuanphat" target="_blank" aria-label="Instagram">
+        <i class="fab fa-instagram"></i>
+      </a>
+    </div>
+  </section>
 
-    <footer>
-        <p>&copy; 2025 Trieu Huy Giang All rights reserved.</p>
-    </footer>
-    <script>
-        const nav = document.querySelector("nav");
-        let lastScrollY = window.scrollY;
+  <footer>
+    <p>&copy; 2025 Trieu Huy Giang. All rights reserved.</p>
+  </footer>
 
-        window.addEventListener("scroll", () => {
-            const currentScroll = window.scrollY;
+  <script>
+    const nav = document.querySelector("nav");
+    let lastScrollY = window.scrollY;
 
-            // When scrolling down
-            if (currentScroll > lastScrollY && currentScroll > 100) {
-                nav.classList.add("hide");
-            }
-            // When scrolling up
-            else {
-                nav.classList.remove("hide");
+    window.addEventListener("scroll", () => {
+      const currentScroll = window.scrollY;
 
-                if (currentScroll > 50) {
-                    nav.classList.add("shrink");
-                } else {
-                    nav.classList.remove("shrink");
-                }
-            }
+      if (currentScroll > lastScrollY && currentScroll > 100) {
+        nav.classList.add("hide");
+      } else {
+        nav.classList.remove("hide");
 
-            lastScrollY = currentScroll;
-        });
-    </script>
+        if (currentScroll > 50) {
+          nav.classList.add("shrink");
+        } else {
+          nav.classList.remove("shrink");
+        }
+      }
 
-
-
+      lastScrollY = currentScroll;
+    });
+  </script>
 </body>
-
 
 </html>
