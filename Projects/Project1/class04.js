@@ -21,11 +21,22 @@ scene.add(directionLight)
 
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.3); // white light at 50% intensity
 scene.add(ambientLight)
-
+//****environment
+// const envMaploader = new THREE.CubeTextureLoader();
+// const environmentMap = envMaploader.load([
+//     'textures/Milkyway/right.png', 'textures/Milkyway/left.png',
+//     'textures/Milkyway/top.png', 'textures/Milkyway/bottom.png',
+//     'textures/Milkyway/front.png', 'textures/Milkyway/back.png'
+// ]);
+// scene.environment = environmentMap;
+// scene.background = environmentMap;
+//***************************************** */
 // load different color textures
 const textureSilver = new THREE.TextureLoader().load('textures/silver.png');
 const textureGold = new THREE.TextureLoader().load('textures/intricateGold.png');
 const textureUV = new THREE.TextureLoader().load('textures/uv_grid_opengl.jpg');
+const texture = new THREE.TextureLoader().load('textures/worldColour.5400x2700.jpg');
+const dispTexture = new THREE.TextureLoader().load('textures/earth_bumpmap.jpg');
 
 textureGold.colorSpace = THREE.SRGBColorSpace;
 textureUV.colorSpace = THREE.SRGBColorSpace;
@@ -33,6 +44,7 @@ textureUV.colorSpace = THREE.SRGBColorSpace;
 const materialSilver = new THREE.MeshStandardMaterial({ map: textureSilver });
 const materialGold = new THREE.MeshStandardMaterial({ map: textureGold });
 const materialUV = new THREE.MeshStandardMaterial({ map: textureUV });
+const materialEarth = new THREE.MeshStandardMaterial({ map: texture, bumpMap: dispTexture, bumpScale: 100 });
 
 // Creating a cube
 const boxX = 1, boxY = 1, boxZ = 1;
@@ -40,7 +52,7 @@ const boxSegment = 100;
 const boxGeometry = new THREE.BoxGeometry(boxX, boxY, boxZ, boxSegment, boxSegment, boxSegment);
 
 // add cube to the scene
-const cube = new THREE.Mesh(boxGeometry, materialUV);
+const cube = new THREE.Mesh(boxGeometry, materialEarth);
 cube.position.set(0, 1, 0);
 scene.add(cube);
 
@@ -61,21 +73,18 @@ scene.add(sphere);
 }
 
 
-const texture = new THREE.TextureLoader().load('textures/worldColour.5400x2700.jpg');
-const dispTexture = new THREE.TextureLoader().load('textures/earth_bumpmap.jpg');
 
-const materialBump = new THREE.MeshStandardMaterial({ map: texture, bumpMap: dispTexture, bumpScale: 100 });
 
 // Earth Sphere (planet)
 const earthGeometry = new THREE.SphereGeometry(0.75, 64, 64); // more segments for smooth sphere
-const earth = new THREE.Mesh(earthGeometry, materialBump);
+const earth = new THREE.Mesh(earthGeometry, materialEarth);
 earth.position.set(0, -1, 0);
 scene.add(earth);
 //
 
 
 const planeGeometry = new THREE.PlaneGeometry(3.6, 1.8, 2, 1);
-const plane = new THREE.Mesh(planeGeometry, materialBump)
+const plane = new THREE.Mesh(planeGeometry, materialEarth)
 plane.position.set(0, -3, 0)
 scene.add(plane);
 
