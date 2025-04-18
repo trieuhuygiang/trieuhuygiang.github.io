@@ -1,0 +1,123 @@
+// Importing OrbitControls (make sure the path matches the version you are using)
+import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.166.0/build/three.module.js';
+import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.166.0/examples/jsm/controls/OrbitControls.js';
+import { OBJLoader } from 'https://threejs.org/examples/jsm/loaders/OBJLoader.js';
+
+let camera, scene, renderer;
+let object;
+init();
+
+function init() {
+
+	camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 20);
+	camera.position.z = 2.5;
+
+	// scene
+	scene = new THREE.Scene();
+
+	const ambientLight = new THREE.AmbientLight(0xcccccc, 0.2);
+	scene.add(ambientLight);
+
+	const directionalLight = new THREE.DirectionalLight(0xffffff, 10.8);
+	directionalLight.position.set(1, 1, 0).normalize();
+	scene.add(directionalLight);
+
+	const envMaploader = new THREE.CubeTextureLoader();
+	const environmentMap = envMaploader.load([
+		'textures/Bridge2/posx.jpg', 'textures/Bridge2/negx.jpg',
+		'textures/Bridge2/posy.jpg', 'textures/Bridge2/negy.jpg',
+		'textures/Bridge2/posz.jpg', 'textures/Bridge2/negz.jpg'
+	]);
+	scene.environment = environmentMap;
+	scene.background = environmentMap;
+
+	const textureMap = new THREE.TextureLoader().load('models/bunny_base.png');
+	const textureMaterial = new THREE.MeshStandardMaterial({ map: textureMap });
+
+	// Create a metallic material with a gold tint
+	const metalMaterial = new THREE.MeshStandardMaterial({
+		color: 0xFFD700, // Gold color
+		metalness: 0.9, // Fully metallic
+		roughness: 0.1 // A bit of roughness to simulate gold's reflectivity
+	});
+
+	const matteMaterial = new THREE.MeshStandardMaterial({
+		color: 0xFFD700, // Gold color
+		metalness: 0.1,
+		roughness: 0.8
+	});
+
+	const glassmaterial = new THREE.MeshPhysicalMaterial({
+		color: 0xffff00, // Adjust the color as needed
+		metalness: 0, // Glass is not metallic
+		roughness: 0, // Smooth surface
+		transmission: 1, // 0 is fully opaque, 1 is fully transparent (glass-like)
+		transparent: false, // Enable transparency
+		reflectivity: 1, // Adjust for the level of reflectivity
+		refractionRatio: 0.9, // Adjust for the level of refraction
+	});
+
+	const clayMaterial = new THREE.MeshPhysicalMaterial({
+		color: 0xd8a15f,         // Earthy clay tone
+		metalness: 0.0,          // Non-metallic
+		roughness: 0.95,         // High roughness = matte
+		transmission: 0.0,
+		transparent: false,
+		reflectivity: 0.0,
+	});
+
+
+	const loader = new OBJLoader();
+	// model
+	function onProgress(xhr) {
+		if (xhr.lengthComputable) {
+			const percentComplete = xhr.loaded / xhr.total * 100;
+			//console.log('model ' + percentComplete.toFixed(2) + '% downloaded');
+		}
+	}
+	function onError() { }
+
+	loader.load('models/pyramid.obj', function (object) {
+
+		// attach material
+		object.traverse(function (child) {
+			if (child.isMesh) {
+				child.material = clayMaterial; // Apply the material to each mesh
+			}
+		});
+
+		// Calculate the bounding box to get model size and center
+		const boundingBox = new THREE.Box3().setFromObject(object);
+		// Center the model
+		const center = boundingBox.getCenter(new THREE.Vector3());
+		// Scale the model to a unit scale and center it to (0,0,0)
+		const size = boundingBox.getSize(new THREE.Vector3());
+		const maxDimension = Math.max(size.x, size.y, size.z);
+		const scale = 1.0 / maxDimension;
+		object.scale.set(scale, scale, scale);
+		object.position.set(-center.x * scale, -center.y * scale, -center.z * scale)
+
+		// Add the model to the scene
+		scene.add(object);
+		render();
+	}, onProgress, onError);
+
+	renderer = new THREE.WebGLRenderer({ antialias: true });
+	renderer.setPixelRatio(window.devicePixelRatio);
+	renderer.setSize(window.innerWidth, window.innerHeight);
+	document.body.appendChild(renderer.domElement);
+
+	const controls = new OrbitControls(camera, renderer.domElement);
+	controls.addEventListener('change', render);
+	window.addEventListener('resize', onWindowResize);
+}
+
+function onWindowResize() {
+	camera.aspect = window.innerWidth / window.innerHeight;
+	camera.updateProjectionMatrix();
+	renderer.setSize(window.innerWidth, window.innerHeight);
+}
+
+function render() {
+	renderer.render(scene, camera);
+}
